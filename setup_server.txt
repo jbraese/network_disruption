@@ -1,0 +1,39 @@
+
+# initial set up of linux server
+# should be initialized from root user
+
+# generate new user with sudo privs
+adduser op
+usermod -aG sudo op
+
+# enable firewall and allow ssh
+ufw allow OpenSSH
+ufw enable
+
+#############################
+# at this stage, login through SSH to the newly created sudo user
+# and run all following commands from the op user, not the root
+##############################
+
+# logged in as new user, update package manager and set up git
+sudo apt update
+sudo apt install git
+git --version
+# adjust values for name and email
+git config --global user.name "Name"
+git config --global user.email "email@domain.com"
+git config --list
+
+# setup folder for project and move to it
+mkdir network_manila
+cd network_manila
+
+# clone the repositry which contains the environment set up script
+git clone https://github.com/jbraese/network_disruption.git
+cd network_disruption
+
+#check that the env setup file looks good
+nano setup_environment.sh
+
+#run the setup file
+bash setup_environment.sh
