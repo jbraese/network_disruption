@@ -1,7 +1,7 @@
 # this script sets up an anaconda setup_environment
 # for network analysis using a few python analyis
 
-set -euo pipefail
+set -eu -o pipefail
 
 # download anaconda
 #(update link with newest version from anaconda.com/distribution)
