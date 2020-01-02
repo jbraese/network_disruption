@@ -24,6 +24,19 @@ git config --global user.name "Name"
 git config --global user.email "email@domain.com"
 git config --list
 
+# download anaconda
+#(update link with newest version from anaconda.com/distribution)
+cd /tmp
+curl -O https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh
+
+# execute
+bash Anaconda3-2019.10-Linux-x86_64.sh
+# agree to licencse and accept default location
+# agree to prepend conda to PATH
+
+#activate installation
+source ~/.bashrc
+
 # setup folder for project and move to it
 mkdir network_manila
 cd network_manila
@@ -32,8 +45,12 @@ cd network_manila
 git clone https://github.com/jbraese/network_disruption.git
 cd network_disruption
 
+
+
+
 #check that the env setup file looks good
 nano setup_environment.sh
+#exit with cmd+
 
 #run the setup file
 bash setup_environment.sh

@@ -3,19 +3,6 @@
 
 set -eu -o pipefail
 
-# download anaconda
-#(update link with newest version from anaconda.com/distribution)
-cd /tmp
-curl -O https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh
-
-# execute
-bash Anaconda3-2019.10-Linux-x86_64.sh
-# agree to licencse and accept default location
-# agree to prepend conda to PATH
-
-#activate installation
-source ~/.bashrc
-
 # set up and activate new python 3.6 anaconda environment
 conda create --name network_manila python=3.6
 conda activate network_manila
@@ -35,4 +22,4 @@ git clone https://github.com/worldbank/GOSTnets.git
 python setup.py build
 python setup.py install
 
-#further envs?
+#further packages?
