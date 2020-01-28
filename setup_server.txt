@@ -38,19 +38,56 @@ bash Anaconda3-2019.10-Linux-x86_64.sh
 source ~/.bashrc
 
 # setup folder for project and move to it
+cd /home/op
 mkdir network_manila
 cd network_manila
 
+
 # clone the repositry which contains the environment set up script
-git clone https://github.com/jbraese/network_disruption.git
-cd network_disruption
+#git clone https://github.com/jbraese/network_disruption.git
+#cd network_disruption
+
+################################################################################
+# set up and activate new python 3.6 anaconda environment
+conda create --name network_manila python=3.6
+conda activate network_manila
+
+#change to project folder
+cd /home/op/network_manila
+
+conda install rtree
+conda install geopandas
+conda install rasterio
+conda install -c conda-forge geojson
+conda install gdal
+pip install geopy
+pip install boltons
+pip install pulp
+git clone https://github.com/worldbank/GOSTnets.git
+cd GOSTnets
+python setup.py build
+python setup.py install
+cd ..
+conda install jupyter notebook
+conda install seaborn
 
 
+###########################################################################
+# not part of installation- just useful thing
+#detach processes from shell/SSH so that they keep being executed even if
+#   SSH connection is terminated
+# tutorial see here: https://askubuntu.com/a/8657
 
+# start process with name jupnotebook
+screen -S jupnotebook
 
-#check that the env setup file looks good
-nano setup_environment.sh
-#exit with cmd+
+#then activate your conda environment and start jupyter notebook process
+# run scripts in jupyter notebook
+# Press Ctrl-A then Ctrl-D. This will "detach" your screen session but
+#     leave your processes running. You can now log out of the remote box.
 
-#run the setup file
-bash setup_environment.sh
+screen -list #shows running screen processes
+
+#to return: log back onto ssh and re-attach process again:
+screen -r jupnotebook
+# also need to activate conda environment?

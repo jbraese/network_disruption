@@ -19,6 +19,7 @@ pip install boltons
 pip install pulp
 
 git clone https://github.com/worldbank/GOSTnets.git
+cd GOSTnets
 python setup.py build
 python setup.py install
 
